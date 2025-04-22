@@ -21,3 +21,28 @@ In this demo, we set up a local Kubernetes cluster using **Minikube** and deploy
 <img src=""/>
 
 ## ⚙️ Project Configuration
+
+### Setting up Minikube
+1. Start Minikube
+2. Install kubectl
+3. Check the status of Minikube
+4. Check current nodes
+5. Check current services
+
+### Deploying MongoDB and Mongo-Express
+1. Create a mongo-secret.yaml file
+5. encode tge username and password using base64
+6. Update the mongo-scret.yaml file with the encoded username and password
+7. Verify that the secret has been created
+8. Create the deployment mongo.yaml file
+9. Reference the secret file from mongo.yaml
+10. Apply the mongo.yaml file
+11. Check all components
+12. Verify the mongo pod
+13. Check the details of the pod
+14. Add the mongo service
+15. Reapply the mongo yaml file
+16. Verify services
+17. Verify that the service is pointing to the right pod
+18. create a ConfigMap.yaml file
+19. 
