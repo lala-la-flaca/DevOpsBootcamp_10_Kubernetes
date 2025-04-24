@@ -30,19 +30,29 @@ In this demo, we set up a local Kubernetes cluster using **Minikube** and deploy
 5. Check current services
 
 ### Deploying MongoDB and Mongo-Express
-1. Create a mongo-secret.yaml file
-5. encode tge username and password using base64
-6. Update the mongo-scret.yaml file with the encoded username and password
-7. Verify that the secret has been created
-8. Create the deployment mongo.yaml file
-9. Reference the secret file from mongo.yaml
-10. Apply the mongo.yaml file
-11. Check all components
-12. Verify the mongo pod
-13. Check the details of the pod
-14. Add the mongo service
-15. Reapply the mongo yaml file
-16. Verify services
-17. Verify that the service is pointing to the right pod
-18. create a ConfigMap.yaml file
-19. 
+1. Create the mongo-secret.yaml file.
+5. Encode the MongoDB username and password using Base64.
+6. Update mongo-secret.yaml with the encoded credentials.
+7. Apply the secret file and verify that the secret was created.
+8. Create the mongo.yaml deployment file.
+9. Reference the secret in mongo.yaml.
+10. Apply the mongo.yaml file.
+11. Verify that all components were created.
+12. Confirm that the MongoDB pod is running.
+13. Inspect the MongoDB pod details.
+14. Add a MongoDB service definition to mongo.yaml.
+15. Reapply the mongo.yaml file.
+16. Verify that the service is created.
+17. Ensure the service points to the correct pod.
+18. Create the ConfigMap.yaml file.
+19. Create the mongo-express.yaml deployment file and reference the ConfigMap from MongoExpress container.
+20. Verify pods.
+21. Verify that all pods are running.
+22. Verify the logs of the Mongo-Express pod to ensure it started successfully.
+23. Verify that the necessary services have been created.
+24. <details><summary><strong>External IP when using Minikube</strong></summary>  > :memo: **Note:** When using Minikube, external IPs are handled differently. Use the following command to access the service.
+  ```bash
+    
+  ```
+</details>
+26. Access Mongo Express using the External IP address. If you're using Minikube, use the URL provided by the minikube service mongo-express --url command.
