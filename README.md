@@ -50,9 +50,12 @@ In this demo, we set up a local Kubernetes cluster using **Minikube** and deploy
 21. Verify that all pods are running.
 22. Verify the logs of the Mongo-Express pod to ensure it started successfully.
 23. Verify that the necessary services have been created.
-24. <details><summary><strong>External IP when using Minikube</strong></summary>  > :memo: **Note:** When using Minikube, external IPs are handled differently. Use the following command to access the service.
-  ```bash
-    
-  ```
+24. <details><summary><strong>External IP when using Minikube</strong></summary>
+    📝 Note: When using Minikube, external IPs are handled differently. Use the following command to access Mongo-express.
+
+    ```bash
+
+    ````
+      
 </details>
 26. Access Mongo Express using the External IP address. If you're using Minikube, use the URL provided by the minikube service mongo-express --url command.
