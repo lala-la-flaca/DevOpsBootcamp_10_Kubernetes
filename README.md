@@ -62,26 +62,37 @@ In this demo, we set up a local Kubernetes cluster using **Minikube** and deploy
 1. Create the mongo-secret.yaml file.
    
    ```bash
+       apiVersion: v1
+      kind: Secret
+      metadata:
+        name: mongodb-secret
+      type: Opaque
+      data:
+        mongo-root-username: xxxxx
+        mongo-root-password: xxxxx
+     
    ```
    <img src="" width=800 />
    
 2. Encode the MongoDB username and password using Base64.
    
    ```bash
+     echo -n 'username' | base64
+     echo -n 'password' | base64
    ```
-   <img src="" width=800 />
+   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_10_Kubernetes/blob/main/Img/2%20Secret%20file%20enconding%20base64.png" width=800 />
    
 3. Update mongo-secret.yaml with the encoded credentials.
    
-   ```bash
-   ```
-   <img src="" width=800 />
+   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_10_Kubernetes/blob/main/Img/3%20SECRET%20FILE%20YAML%20WITH%20ENCODED%20PASSWORD%20EX.png" width=800 />
    
 4. Apply the secret file and verify that the secret was created.
     
    ```bash
+     kubectl apply -f mongo-secret.yaml
+     kubectl get secret
    ```
-   <img src="" width=800 />
+   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_10_Kubernetes/blob/main/Img/4%20APPLYING%20MONGO-SECRET%20YAML%20FILE.png" width=800 />
    
 5. Create the mongo.yaml deployment file.
     
@@ -91,22 +102,55 @@ In this demo, we set up a local Kubernetes cluster using **Minikube** and deploy
    
 6. Reference the secret in mongo.yaml.
 
-    
    ```bash
+      apiVersion: apps/v1 
+      kind: Deployment
+      metadata:
+        name: mongodb-deployment
+        labels:
+          app: mongodb
+      spec:
+        replicas: 1
+        selector:
+          matchLabels:
+            app: mongodb
+        template: 
+          metadata:
+            labels:
+              app: mongodb
+          spec:
+            containers:
+            - name: mongodb
+              image: mongo:4.4
+              ports:
+              - containerPort: 27017
+              env:
+              - name: MONGO_INITDB_ROOT_USERNAME
+                valueFrom:
+                  secretKeyRef:
+                    name: mongodb-secret
+                    key: mongo-root-username
+              - name: MONGO_INITDB_ROOT_PASSWORD
+                valueFrom:
+                  secretKeyRef:
+                    name: mongodb-secret
+                    key: mongo-root-password
    ```
 
-   <img src="" width=800 />
+   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_10_Kubernetes/blob/main/Img/6%20referencing%20the%20secret%20file%20from%20mongo%20yaml%20file.png" width=800 />
    
 7. Apply the mongo.yaml file.
     
    ```bash
+     kubectl apply -f mongo.yaml
    ```
 
-   <img src="" width=800 />
+   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_10_Kubernetes/blob/main/Img/8%20deployment%20created.png" width=800 />
    
 8. Verify that all components were created.
     
    ```bash
+     kubectl get all
    ```
 
    <img src="" width=800 />
@@ -114,20 +158,35 @@ In this demo, we set up a local Kubernetes cluster using **Minikube** and deploy
 9. Confirm that the MongoDB pod is running.
     
    ```bash
+   kubectl get pod
    ```
-
-   <img src="" width=800 />
    
 10. Inspect the MongoDB pod details.
 
     ```bash
+      kubectl describe pod mongodb-deployment-7bfd7c5cc8-4jt2q
      ```
 
-   <img src="" width=800 />
+   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_10_Kubernetes/blob/main/Img/11%20to%20check%20pod%20%20info%20and%20if%20it%20is%20ok.png" width=800 />
    
 11. Add a MongoDB service definition to mongo.yaml.
 
+    <details><summary><strong>📝 3 Dashes</strong></summary>
+    📝 Note: In a YAML file, three dashes (---) indicate the start of a new document. This allows multiple resource definitions to be included in a single file.
+
     ```bash
+      ---
+      apiVersion: v1
+      kind: Service
+      metadata:
+        name: mongodb-service
+      spec:
+        selector:
+          app: mongodb
+        ports:
+          - protocol: TCP
+            port: 27017
+            targetPort: 27017
      ```
 
    <img src="" width=800 />
@@ -137,7 +196,7 @@ In this demo, we set up a local Kubernetes cluster using **Minikube** and deploy
     ```bash
      ```
 
-   <img src="" width=800 />
+   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_10_Kubernetes/blob/main/Img/13%20applying%20mongo%20yaml%20file%20with%20service.png" width=800 />
    
 13. Verify that the service is created.
 
