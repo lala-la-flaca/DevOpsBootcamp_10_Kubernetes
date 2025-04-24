@@ -171,8 +171,9 @@ In this demo, we set up a local Kubernetes cluster using **Minikube** and deploy
    
 11. Add a MongoDB service definition to mongo.yaml.
 
-    <details><summary><strong>📝 3 Dashes</strong></summary>
-    📝 Note: In a YAML file, three dashes (---) indicate the start of a new document. This allows multiple resource definitions to be included in a single file.
+    <details><summary><strong>📝 Three dashes (---)</strong></summary>
+      📝 Note: In a YAML file, three dashes (---) indicate the start of a new document. This allows multiple resource definitions to be included in a single file.
+    </details>
 
     ```bash
       ---
