@@ -26,27 +26,36 @@ In this demo, we set up a local Kubernetes cluster using **Minikube** and deploy
 1. Start Minikube
 
    ```bash
+     minikube start
    ```
+   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_10_Kubernetes/blob/main/Img/1%20start.png" width=800 />
    
 2. Install kubectl
 
    ```bash
+     sudo snap install kubectl --classic
    ```
    
 3. Check the status of Minikube
    
    ```bash
+     minikube status
    ```
+   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_10_Kubernetes/blob/main/Img/2%20status.png" width=800 />
    
 4. Check current nodes
    
    ```bash
+     kubectl get node
    ```
+   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_10_Kubernetes/blob/main/Img/3%20get%20status%20node.png" width=800 />
    
 5. Check current services
    
    ```bash
+     kubectl get service
    ```
+   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_10_Kubernetes/blob/main/Img/4%20get%20services.png" width=800 />
    
 
 ### Deploying MongoDB and Mongo-Express
@@ -54,26 +63,31 @@ In this demo, we set up a local Kubernetes cluster using **Minikube** and deploy
    
    ```bash
    ```
+   <img src="" width=800 />
    
 2. Encode the MongoDB username and password using Base64.
    
    ```bash
    ```
+   <img src="" width=800 />
    
 3. Update mongo-secret.yaml with the encoded credentials.
    
    ```bash
    ```
+   <img src="" width=800 />
    
 4. Apply the secret file and verify that the secret was created.
     
    ```bash
    ```
+   <img src="" width=800 />
    
 5. Create the mongo.yaml deployment file.
     
    ```bash
    ```
+   <img src="" width=800 />
    
 6. Reference the secret in mongo.yaml.
 
