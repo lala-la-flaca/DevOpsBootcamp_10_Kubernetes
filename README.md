@@ -105,88 +105,88 @@ In this demo, we set up a local Kubernetes cluster using **Minikube** and deploy
    <img src="" width=800 />
    
 10. Inspect the MongoDB pod details.
-    
-   ```bash
-   ```
+
+    ```bash
+     ```
 
    <img src="" width=800 />
    
 11. Add a MongoDB service definition to mongo.yaml.
-    
-   ```bash
-   ```
+
+    ```bash
+     ```
 
    <img src="" width=800 />
    
 12. Reapply the mongo.yaml file.
-    
-   ```bash
-   ```
+
+    ```bash
+     ```
 
    <img src="" width=800 />
    
 13. Verify that the service is created.
-    
-   ```bash
-   ```
+
+    ```bash
+     ```
 
    <img src="" width=800 />
    
 14. Ensure the service points to the correct pod.
-    
-   ```bash
-   ```
+
+    ```bash
+     ```
 
    <img src="" width=800 />
    
 15. Create the ConfigMap.yaml file.
-    
-   ```bash
-   ```
+
+    ```bash
+     ```
 
    <img src="" width=800 />
    
 16. Create the mongo-express.yaml deployment file and reference the ConfigMap from MongoExpress container.
-    
-   ```bash
-   ```
+
+    ```bash
+     ```
 
    <img src="" width=800 />
    
 17. Verify pods.
-    
-   ```bash
-   ```
+
+    ```bash
+     ```
 
    <img src="" width=800 />
    
 18. Verify that all pods are running.
-    
-   ```bash
-   ```
+
+    ```bash
+     ```
 
    <img src="" width=800 />
    
 19. Verify the logs of the Mongo-Express pod to ensure it started successfully.
-    
-   ```bash
-   ```
+
+    ```bash
+     ```
 
    <img src="" width=800 />
    
 20. Verify that the necessary services have been created.
-    
-   ```bash
-   ```
+
+    ```bash
+     ```
 
    <img src="" width=800 />
    
 21. <details><summary><strong>External IP when using Minikube</strong></summary>
     📝 Note: When using Minikube, external IPs are handled differently. Use the following command to access Mongo-express.
-
+  
     ```bash
 
-    ````
+      ````
 
     <img src="" width=800 />
       
