@@ -72,7 +72,6 @@ In this demo, we set up a local Kubernetes cluster using **Minikube** and deploy
         mongo-root-password: xxxxx
      
    ```
-   <img src="" width=800 />
    
 2. Encode the MongoDB username and password using Base64.
    
@@ -94,13 +93,7 @@ In this demo, we set up a local Kubernetes cluster using **Minikube** and deploy
    ```
    <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_10_Kubernetes/blob/main/Img/4%20APPLYING%20MONGO-SECRET%20YAML%20FILE.png" width=800 />
    
-5. Create the mongo.yaml deployment file.
-    
-   ```bash
-   ```
-   <img src="" width=800 />
-   
-6. Reference the secret in mongo.yaml.
+5. Create the mongo.yaml deployment file and reference the secret in the mongo.yaml.
 
    ```bash
       apiVersion: apps/v1 
@@ -139,37 +132,34 @@ In this demo, we set up a local Kubernetes cluster using **Minikube** and deploy
 
    <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_10_Kubernetes/blob/main/Img/6%20referencing%20the%20secret%20file%20from%20mongo%20yaml%20file.png" width=800 />
    
-7. Apply the mongo.yaml file.
+6. Apply the mongo.yaml file.
     
    ```bash
      kubectl apply -f mongo.yaml
    ```
-
    <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_10_Kubernetes/blob/main/Img/8%20deployment%20created.png" width=800 />
    
-8. Verify that all components were created.
+7. Verify that all components were created.
     
    ```bash
      kubectl get all
    ```
-
-   <img src="" width=800 />
    
-9. Confirm that the MongoDB pod is running.
+8. Confirm that the MongoDB pod is running.
     
    ```bash
    kubectl get pod
    ```
    
-10. Inspect the MongoDB pod details.
+9. Inspect the MongoDB pod details.
 
     ```bash
       kubectl describe pod mongodb-deployment-7bfd7c5cc8-4jt2q
      ```
 
-   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_10_Kubernetes/blob/main/Img/11%20to%20check%20pod%20%20info%20and%20if%20it%20is%20ok.png" width=800 />
+    <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_10_Kubernetes/blob/main/Img/11%20to%20check%20pod%20%20info%20and%20if%20it%20is%20ok.png" width=800 />
    
-11. Add a MongoDB service definition to mongo.yaml.
+10. Add a MongoDB service definition to mongo.yaml.
 
     <details><summary><strong>📝 Three dashes (---)</strong></summary>
       📝 Note: In a YAML file, three dashes (---) indicate the start of a new document. This allows multiple resource definitions to be included in a single file.
@@ -190,23 +180,20 @@ In this demo, we set up a local Kubernetes cluster using **Minikube** and deploy
             targetPort: 27017
      ```
 
-   <img src="" width=800 />
-   
-12. Reapply the mongo.yaml file.
+11. Reapply the mongo.yaml file.
 
     ```bash
     kubectl apply -f mongo.yaml
      ```
-
-   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_10_Kubernetes/blob/main/Img/13%20applying%20mongo%20yaml%20file%20with%20service.png" width=800 />
+    <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_10_Kubernetes/blob/main/Img/13%20applying%20mongo%20yaml%20file%20with%20service.png" width=800 />
    
-13. Verify that the service is created.
+12. Verify that the service is created.
 
     ```bash
       kubectl get service
      ```
 
-   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_10_Kubernetes/blob/main/Img/14%20checking%20service%20was%20created.png" width=800 />
+    <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_10_Kubernetes/blob/main/Img/14%20checking%20service%20was%20created.png" width=800 />
    
 14. Ensure the service points to the correct pod.
 
@@ -214,8 +201,7 @@ In this demo, we set up a local Kubernetes cluster using **Minikube** and deploy
       kubectl describe service mongo-service
       kubectl get pod -o wide
      ```
-
-   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_10_Kubernetes/blob/main/Img/15%20checking%20that%20service%20has%20the%20right%20pod.png" width=800 />
+    <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_10_Kubernetes/blob/main/Img/15%20checking%20that%20service%20has%20the%20right%20pod.png" width=800 />
    
 15. Create the ConfigMap.yaml file.
 
@@ -228,7 +214,7 @@ In this demo, we set up a local Kubernetes cluster using **Minikube** and deploy
       database_url: mongodb-service
      ```
 
-   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_10_Kubernetes/blob/main/Img/16%20configmap%20file.png" width=800 />
+    <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_10_Kubernetes/blob/main/Img/16%20configmap%20file.png" width=800 />
    
 16. Create the mongo-express.yaml deployment file and reference the ConfigMap from MongoExpress container.
 
@@ -286,28 +272,24 @@ In this demo, we set up a local Kubernetes cluster using **Minikube** and deploy
           nodePort: 30000
     
      ```
-
-   <img src="" width=800 />
    
 17. Apply configmap.yaml file and mongo-express.yaml.
     
-19. Verify that all pods are running.
+18. Verify that all pods are running.
 
     ```bash
       kubectl apply -f mongo-configmap.yaml
       kubectl apply -f mongo-express.yaml
       kubectl get pod
      ```
-
-   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_10_Kubernetes/blob/main/Img/17%20applying%20config%20map%20and%20mongo%20express.png" width=800 />
+    <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_10_Kubernetes/blob/main/Img/17%20applying%20config%20map%20and%20mongo%20express.png" width=800 />
    
 19. Verify the logs of the Mongo-Express pod to ensure it started successfully.
 
     ```bash
       kubectl logs mongo-express-5dd87b9fcf-mlrlw
      ```
-
-   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_10_Kubernetes/blob/main/Img/18%20checking%20mongo%20expres%20slogs.png" width=800 />
+    <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_10_Kubernetes/blob/main/Img/18%20checking%20mongo%20expres%20slogs.png" width=800 />
    
 20. Verify that the necessary services have been created.
 
@@ -315,7 +297,7 @@ In this demo, we set up a local Kubernetes cluster using **Minikube** and deploy
       kubectl get service
      ```
 
-   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_10_Kubernetes/blob/main/Img/19%20srevices%20internal%20and%20external.png" width=800 />
+    <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_10_Kubernetes/blob/main/Img/19%20srevices%20internal%20and%20external.png" width=800 />
    
 21. <details><summary><strong>External IP when using Minikube</strong></summary>
     📝 Note: When using Minikube, external IPs are handled differently. Use the following command to access Mongo-express. To install it use sudo snap install kubectx --classic
@@ -329,6 +311,6 @@ In this demo, we set up a local Kubernetes cluster using **Minikube** and deploy
       
 </details>
 
-22. Access Mongo Express using the External IP address. If you're using Minikube, use the URL provided by the minikube service mongo-express --url command.
+21. Access Mongo Express using the External IP address. If you're using Minikube, use the URL provided by the minikube service mongo-express --url command.
 
-  <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_10_Kubernetes/blob/main/Img/21%20mongo-express.png" width=800 />
+    <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_10_Kubernetes/blob/main/Img/21%20mongo-express.png" width=800 />
