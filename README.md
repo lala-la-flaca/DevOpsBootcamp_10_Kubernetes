@@ -314,3 +314,6 @@ In this demo, we set up a local Kubernetes cluster using **Minikube** and deploy
 21. Access Mongo Express using the External IP address. If you're using Minikube, use the URL provided by the minikube service mongo-express --url command.
 
     <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_10_Kubernetes/blob/main/Img/21%20mongo-express.png" width=800 />
+
+
+  
